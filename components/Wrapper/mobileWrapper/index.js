@@ -20,9 +20,7 @@ const MobileWrapper = ({ children }) => {
         <MobileHeader visible={visible}/>
         <Sidebar.Pusher>
           <Container fluid>
-            <div className={styles.sidebarPusher}>
               {children}
-            </div>
           </Container>
           <Footer />
         </Sidebar.Pusher>
