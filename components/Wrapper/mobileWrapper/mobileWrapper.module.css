@@ -1,0 +1,11 @@
+
+.mobileParentWraper {
+    margin-top: 5px!important;
+}
+.sidebarLogoWrapper {
+    display: "flex" !important;
+    justify-content: "space-around" !important;
+
+}
+
+
