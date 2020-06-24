@@ -7,12 +7,9 @@ export default class DemoCarousel extends Component {
     render() {
         return (
             <Carousel
-                showArrows={false}
-                showStatus={false}
-                showThumbs={false}
-                autoPlay={true}
-                infiniteLoop={true}
-                swipeable={true}
+                autoPlay
+                infiniteLoop
+                swipeable
                 interval={5000}
             >
                 <div className={styles.carouselImage}>
