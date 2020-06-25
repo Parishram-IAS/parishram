@@ -1,4 +1,10 @@
-
+body{
+  font-family: 'Lato';
+  font-size: 22px;
+}
+a {
+  text-decoration: none;
+}
 .grid-margin-removal {
   margin: 0px !important;
 }
@@ -11,3 +17,21 @@
 .text-center {
   text-align: center;
 }
+
+
+/* Editorail Card START*/
+
+.editorial-menu-tab > .secondary{
+  display: flex;
+  justify-content:  center;
+}
+
+.editorialcard-tab-pane{
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+
+
+
+/* Editorail Card END*/
