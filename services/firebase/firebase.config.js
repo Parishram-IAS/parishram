@@ -1,3 +1,4 @@
+import "firebase"
 import firebase from 'firebase/app';
 import 'firebase/firebase-firestore';
 
@@ -10,14 +11,14 @@ var firebaseConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMNET_ID
+  measurementId: process.env.FIREBASE_MEASUREMNET_ID,
 };
 
 console.log('firebase.apps.length', firebase.apps)
 // Initialize Firebase
-firebase.apps.length
-  ? firebase.app()
-  : firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 
 //Initialize firestore
