@@ -21,7 +21,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
@@ -59,7 +59,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
@@ -97,7 +97,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
@@ -135,7 +135,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
@@ -173,7 +173,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
@@ -211,7 +211,7 @@ const EditorialCard = ({ type }) => {
                             <Image
                                 floated="left"
                                 src={noDataImg}
-                                style={{ height: '100px' }}
+                                
                             />
                         </Grid.Column>
                         <Grid.Column
