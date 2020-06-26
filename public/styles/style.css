@@ -31,7 +31,40 @@ a {
   box-shadow: none !important;
 }
 
-
-
-
 /* Editorail Card END*/
+
+
+/* NEWS FEED START*/
+.news-feed-carousel{
+  min-height: 249px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.newFeed-profile-picture{
+  margin-top: -7.5rem;
+  border: 0.5rem solid #F5F8FC;
+  border-radius: 100%;
+  box-shadow: 2px 2px 7px 0 rgba(105, 146, 203, 0.3);
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+}
+
+.ProfileHeaderWraper{
+  padding-left: 15px
+}
+.badge-group{
+  background-color: antiquewhite;
+    color: #333333;
+    border-radius: 1rem;
+    padding: 0.1875rem 4rem;
+    font-size: 0.75rem;
+    display: inline-block;
+}
+
+.newsFeed-body-wrapper{
+  background-image: url('/assests/images/news_feed_bg.png');
+  width: 100%;
+}
+/* NEWS FEED END*/
