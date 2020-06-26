@@ -1,22 +1,35 @@
-import { Button, Checkbox, Form, Image } from "semantic-ui-react";
+import { Button, Checkbox, Form, Image, Input, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { uploadFileToFirebaseStorage } from "../../services/storage";
 
-const articlePlaceholderImage = "/assets/images/article-placeholder-image.png"
+const articlePlaceholderImage = "/assets/images/article-placeholder-image.png";
 
 const AddArticle = () => {
-  const [formData, setFormData] = useState({title:"", description:"", tags:"", featured_image:""});
+  const [formData, setFormData] = useState({ title: "", description: "", tags: "", featured_image: "" });
+  const [selectedImage, setSelectedImage] = useState(null)
+  const fileInputRef = useRef(null);
 
-  const handleFormChange = event => {
+  const handleFormChange = (event) => {
     const [name, value] = event.target;
-    setFormData(curData=>({...curData, [name]:value}))
-  }
+    setFormData((curData) => ({ ...curData, [name]: value }));
+  };
 
-  const handleImageUpload = event => {
-    console.log(event)
+  const handleChooseImage = event => {
+    setSelectedImage(event.target.files[0])
+  } 
 
-    setFormData(curData=>({...curData, featured_image:"https://grdp.co/cdn-cgi/image/width=700,quality=80/https://gs-post-images.grdp.co/2018/6/daily-current-affairs-for-upsc-and-state-pcs-exams-2-img1528106563849-63.jpg-rs-high-webp.jpg"}))
-  }
+
+
+  const handleImageUpload = async (event) => {
+    console.log(event);
+    console.log("ref files", selectedImage);
+    const downloadURL = await uploadFileToFirebaseStorage(selectedImage, console.log)
+    setFormData((curData) => ({
+      ...curData,
+      featured_image:downloadURL
+    }));
+  };
 
   return (
     <Layout>
@@ -35,7 +48,15 @@ const AddArticle = () => {
         </Form.Field>
         <Form.Field>
           <label>Image</label>
-          <input placeholder="Last Name" type="file" accept="image/*" name="featured_image" onChange={handleImageUpload} />
+          <Input
+            placeholder="Last Name"
+            type="file"
+            accept="image/*"
+            name="featured_image"
+            ref={fileInputRef}
+            onChange={handleChooseImage}
+            icon={<Icon name="cloud upload" inverted circular link onClick={handleImageUpload} as="i" />}
+          />
         </Form.Field>
         <Form.Field>
           <Image src={formData.featured_image || articlePlaceholderImage} fluid />

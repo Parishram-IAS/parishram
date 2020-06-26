@@ -23,6 +23,8 @@ if (!firebase.apps.length) {
 //Initialize firestore
 export const firestore = firebase.firestore();
 
+export const firebaseStorage = firebase.storage ?   firebase.storage() : null;
+
 
 
 export default firebase;
