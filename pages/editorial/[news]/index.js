@@ -1,69 +1,107 @@
-import React, { useEffect } from "react";
-
-import Layout from "../../../components/Layout";
+import React, { useState, useEffect } from "react";
+import Router from 'next/router'
 import { Tab, Button } from "semantic-ui-react";
 
+import Layout from "../../../components/Layout";
 import EditorialCard from "../../../components/EditorialCard";
 import { getArticleList } from "../../../services/firebase/article";
 
-const panes = [
-  {
-    menuItem: <Button>HINDU</Button>,
-    render: () => (
-      <Tab.Pane attached={false} className="editorialcard-tab-pane">
-        <EditorialCard type="hindu" />
-      </Tab.Pane>
-    ),
-  },
-  {
-    menuItem: <Button>TIMES NOW</Button>,
-    render: () => (
-      <Tab.Pane attached={false} className="editorialcard-tab-pane">
-        <EditorialCard type="timesnow" />
-      </Tab.Pane>
-    ),
-  },
-  {
-    menuItem: <Button>INDIA TODAY</Button>,
-    render: () => (
-      <Tab.Pane attached={false} className="editorialcard-tab-pane">
-        <EditorialCard type="indiatoday" />
-      </Tab.Pane>
-    ),
-  },
-  {
-    menuItem: <Button>ALL</Button>,
-    render: () => (
-      <Tab.Pane attached={false} className="editorialcard-tab-pane">
-        <EditorialCard type="all" />
-      </Tab.Pane>
-    ),
-  },
-];
+const editorialTabSelection = {
+    'hindu': 0,
+    'livemint': 1,
+    'indiatoday': 2,
+    'all': 3,
+};
+class Editorial extends React.Component {
+    constructor(props) {
+        super(props);
+        debugger
+        this.state = {
+            defaultActiveIndex: editorialTabSelection[props.url],
+            articleList: JSON.parse(this.props.data) || []
+        }
+    }
 
-const Editorial = (props) => {
-  console.log("JSON.data", JSON.parse(props.data))
+    handleTabChange = (event, data) => {
+        const editorialTabRoute = {
+            0: 'hindu',
+            1: 'livemint',
+            2: 'indiatoday',
+            3: 'all',
+        };
+        const active = data.activeIndex;
+        Router.push(`/editorial/${editorialTabRoute[active]}`, undefined, { shallow: true });
+        this.setState({ defaultActiveIndex: active });
 
-  return (
-    <Layout>
-      <Tab className="editorial-menu-tab" menu={{ secondary: true }} panes={panes} />
-    </Layout>
-  );
+    }
+    render() {
+        const {
+            articleList,
+            defaultActiveIndex,
+        } = this.state;
+        const panes = [
+            {
+                menuItem: <Button>HINDU</Button>,
+                render: () => (
+                    <Tab.Pane attached={false} className="editorialcard-tab-pane">
+                        <EditorialCard type="hindu" articleList={articleList} />
+                    </Tab.Pane>
+                ),
+            },
+            {
+                menuItem: <Button>LIVE MINT</Button>,
+                render: () => (
+                    <Tab.Pane attached={false} className="editorialcard-tab-pane">
+                        <EditorialCard type="livemint" articleList={articleList} />
+                    </Tab.Pane>
+                ),
+            },
+            {
+                menuItem: <Button>INDIA TODAY</Button>,
+                render: () => (
+                    <Tab.Pane attached={false} className="editorialcard-tab-pane">
+                        <EditorialCard type="indiatoday" articleList={articleList} />
+                    </Tab.Pane>
+                ),
+            },
+            {
+                menuItem: <Button>ALL</Button>,
+                render: () => (
+                    <Tab.Pane attached={false} className="editorialcard-tab-pane">
+                        <EditorialCard type="all" />
+                    </Tab.Pane>
+                ),
+            },
+        ];
+        return (
+            <Layout>
+                <Tab
+                    className="editorial-menu-tab"
+                    defaultActiveIndex={defaultActiveIndex}
+                    menu={{ secondary: true }}
+                    panes={panes}
+                    onTabChange={this.handleTabChange}
+                />
+            </Layout>
+        );
+    }
 };
 
 export default Editorial;
 
 export async function getServerSideProps({ req, query, params }) {
-  let articleList;
-  try {
-    articleList = await getArticleList("livemint");
-  } catch (err) {
-    articleList = err
-  }
+    let articleList = {};
+    const queryValue = query.news || 'hindu';
+    try {
+        articleList = await getArticleList(queryValue);
+    } catch (err) {
+        articleList = err
+    }
 
-  return {
-    props: {
-      data: JSON.stringify(articleList),
-    },
-  };
+    return {
+        props: {
+            url: queryValue,
+            data: JSON.stringify(articleList),
+        },
+    };
 }

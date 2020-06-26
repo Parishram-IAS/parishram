@@ -32,7 +32,7 @@ const Home = () => {
                     </Link>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Link href="/editorial">
+                    <Link href="/editorial/hindu">
                         <a>
                             <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/paper.svg" />
                             <Header as='h3' className='text-center'> EDITORIALS</Header>

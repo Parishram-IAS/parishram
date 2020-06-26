@@ -1,12 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
-import { Card, Header, Image, Grid, Icon, Segment, Container } from 'semantic-ui-react';
+import Link from 'next/link';
+import { Card, Header, Image, Grid, Placeholder } from 'semantic-ui-react';
 
 import styles from './EditorialCard.module.css';
-const EditorialCard = ({ type }) => {
+const EditorialCard = ({ articleList, loader, type }) => {
     const noDataImg = '/assests/svg/book.svg';
-    useEffect(() => {
-        console.log(type);
-    }, []);
 
     return (
         <Fragment>
