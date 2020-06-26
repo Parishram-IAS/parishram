@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "semantic-ui-react";
+import Link from 'next/link';
 
 import styles from './DesktopHeader.module.css';
 const DesktopHeader = () => {
@@ -12,9 +13,13 @@ const DesktopHeader = () => {
         <Menu
             secondary
             attached='top'
-            className = {styles.menuWrapper}
+            className={styles.menuWrapper}
         >
-            <Menu.Item header>LOGO</Menu.Item>
+            <Link href="/">
+                <a>
+                    <Menu.Item header>LOGO</Menu.Item>
+                </a>
+            </Link>
             <Menu.Menu position='right'>
                 <Menu.Item
                     name='IAS EXAM'
@@ -26,12 +31,16 @@ const DesktopHeader = () => {
                     active={activeItem === 'CURRENT AFFAIRS'}
                     onClick={handleItemClick}
                 />
+                <Link href="/editorial/hindu">
+                    <a>
+                        <Menu.Item
+                            name='EDITORIALS'
+                            active={activeItem === 'EDITORIALS'}
+                            onClick={handleItemClick}
+                        />
+                    </a>
+                </Link>
                 <Menu.Item
-                    name='EDITORIALS'
-                    active={activeItem === 'EDITORIALS'}
-                    onClick={handleItemClick}
-                />
-                      <Menu.Item
                     name='MAINS ANSWER WRITING'
                     active={activeItem === 'MAINS ANSWER WRITING'}
                     onClick={handleItemClick}
