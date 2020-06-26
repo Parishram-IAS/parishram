@@ -4,12 +4,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import '../public/styles/style.css';
 
 import ErrorBoundary from '../components/ErrorBoundary';
+
 function App({ Component, pageProps }) {
 
     return (
+
         <ErrorBoundary>
             <Component {...pageProps} />
         </ErrorBoundary>
+
     )
 }
 

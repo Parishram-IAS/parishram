@@ -1,0 +1,25 @@
+
+
+.cardWraperrBorder:hover{
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,.1);
+    border-bottom: 4px solid red;
+}
+.editorialCardTitle{
+    padding-top: 20px
+}
+
+.readMoreText{
+    font-weight: 400;
+    color:red !important;
+    text-decoration: underline;
+}
+
+.readMoreText:hover{
+    cursor: pointer;
+}
+
+.editoriolTimeText{
+    font-weight: 400;
+    line-height: 1;
+}
+

@@ -1,3 +1,5 @@
 .menuWrapper {
+    border: none !important;
     background: white !important;
+    margin-bottom: 10px !important;
 }
