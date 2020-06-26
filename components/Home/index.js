@@ -15,20 +15,20 @@ const Home = () => {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/book.svg" />
+                    <Image className={`margin-center ${styles.svgSize}`} src="/assets/svg/book.svg" />
                     <Header as='h3' className='text-center'>IAS EXAM</Header>
                 </Grid.Column>
 
                 <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/newspaper.svg" />
+                    <Image className={`margin-center ${styles.svgSize}`} src="/assets/svg/newspaper.svg" />
                     <Header as='h3' className='text-center'> CURRENT AFFAIRS</Header>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/paper.svg" />
+                    <Image className={`margin-center ${styles.svgSize}`} src="/assets/svg/paper.svg" />
                     <Header as='h3' className='text-center'> EDITORIALS</Header>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/writing.svg" />
+                    <Image className={`margin-center ${styles.svgSize}`} src="/assets/svg/writing.svg" />
                     <Header as='h3' className='text-center'> MAINS ANSWER WRITING</Header>
                 </Grid.Column>
             </Grid.Row >
