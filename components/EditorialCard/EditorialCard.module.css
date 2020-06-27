@@ -22,4 +22,6 @@
     font-weight: 400;
     line-height: 1;
 }
-
+.card_image{
+    height: 100px;
+}

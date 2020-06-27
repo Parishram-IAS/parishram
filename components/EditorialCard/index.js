@@ -21,7 +21,7 @@ const EditorialCard = ({ articleList, loader, type }) => {
                                     alt="parishram-Ias-caursoel"
                                     floated="left"
                                     src={article.featured_image || noDataImg}
-                                    style={{ height: '100px' }}
+                                    className={styles.card_image}
                                 />
                             </Grid.Column>
                             <Grid.Column

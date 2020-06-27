@@ -47,7 +47,7 @@ const NewFeed = ({ data }) => {
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    <Segment style={{ width: "100%" }}>
+                    <Segment className="newsFeed-segment">
                         <div className="newsFeed-body-wrapper">
                             {ReactHtmlParser(desc)}
                         </div>
