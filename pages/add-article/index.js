@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Image, Input, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import { useState, useRef } from "react";
-import { uploadFileToFirebaseStorage, ARTICLE_IMAGES_BASE_PATH } from "../../services/storage";
+import { uploadFileToFirebaseStorage, ARTICLE_IMAGES_BASE_PATH } from "../../services/firebase/storage";
 
 const articlePlaceholderImage = "/assets/images/article-placeholder-image.png";
 

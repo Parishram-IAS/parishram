@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-const { firebaseStorage } = require("./firebase/firebase.config")
+const { firebaseStorage } = require("./firebase.config")
 
 export const ARTICLE_IMAGES_BASE_PATH = "article/images"
 
