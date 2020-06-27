@@ -7,21 +7,21 @@ import { firestore } from "./firebase.config";
  * @returns {array} article returns all the article of particular editorial.
  */
 export const getArticleList = async (editorialId) => {
-  try{
+  try {
     const querySnapshot = await firestore.collection(`editorial/${editorialId}/article`).get();
     const articleList = [];
     querySnapshot.forEach((doc) => {
       articleList.push({ ...doc.data(), id: doc.id });
     });
     return articleList;
-  }catch(err){
+  } catch (err) {
     return []
   }
 
 };
 
 export const getIndividualArticle = async (editorialId, slug) => {
-  try{
+  try {
     const doc = await firestore.doc(`editorial/${editorialId}/article/${slug}`).get();
     if (doc.exists) {
       return doc.data()
@@ -29,7 +29,16 @@ export const getIndividualArticle = async (editorialId, slug) => {
       return null
     }
   }
-  catch(err){
+  catch (err) {
     return null
+  }
+};
+
+export const addNewArticle = async (editorialId, newArticle) => {
+  try {
+    const docRef = await firestore.collection(`editorial/${editorialId}/article`).add(newArticle);
+    return docRef.id;
+  } catch (error) {
+    throw error;
   }
 };
