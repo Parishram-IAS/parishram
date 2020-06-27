@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sidebar, List, Container, Menu } from "semantic-ui-react";
 
+import Link from "next/link";
 import Footer from "../../Footer";
 import styles from "./mobileWrapper.module.css";
 import MobileHeader from "../../Header/MobileHeader";
