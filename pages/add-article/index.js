@@ -1,69 +1,112 @@
 import { Button, Checkbox, Form, Image, Input, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import { useState, useRef } from "react";
-import { uploadFileToFirebaseStorage } from "../../services/storage";
+import { uploadFileToFirebaseStorage, ARTICLE_IMAGES_BASE_PATH } from "../../services/storage";
 
 const articlePlaceholderImage = "/assets/images/article-placeholder-image.png";
 
+const initialFormData = { title: "", description: "", tags: "", featured_image: "" }
+
 const AddArticle = () => {
-  const [formData, setFormData] = useState({ title: "", description: "", tags: "", featured_image: "" });
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [formData, setFormData] = useState(initialFormData);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUploading, setImageUploading] = useState(false);
   const fileInputRef = useRef(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleFormChange = (event) => {
-    const [name, value] = event.target;
+    const {name, value} = event.target;
     setFormData((curData) => ({ ...curData, [name]: value }));
   };
 
-  const handleChooseImage = event => {
-    setSelectedImage(event.target.files[0])
-  } 
-
-
+  const handleChooseImage = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
 
   const handleImageUpload = async (event) => {
     console.log(event);
     console.log("ref files", selectedImage);
-    const downloadURL = await uploadFileToFirebaseStorage(selectedImage, console.log)
+    setImageUploading(true);
+    const fileUploadPath = `${ARTICLE_IMAGES_BASE_PATH}/${file.name}`;
+    const downloadURL = await uploadFileToFirebaseStorage(selectedImage, fileUploadPath, console.log);
     setFormData((curData) => ({
       ...curData,
-      featured_image:downloadURL
+      featured_image: downloadURL,
     }));
+    setImageUploading(false);
+  };
+
+  const handleReset = event => {
+        setFormData(initialFormData)
+        setFormSubmitted(false)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setFormSubmitted(true)
   };
 
   return (
     <Layout>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Field>
           <label>Title</label>
-          <input placeholder="title" name="title" onChange={handleFormChange} value={formData.title} />
+          <Form.Input
+            placeholder="Title"
+            name="title"
+            onChange={handleFormChange}
+            value={formData.title}
+            error={formSubmitted && !formData.title ? "Title cannot be empty" : null}
+          />
         </Form.Field>
         <Form.Field>
           <label>Description</label>
-          <input placeholder="Last Name" name="description" onChange={handleFormChange} value={formData.description} />
+          <Form.Input
+            placeholder="Description"
+            name="description"
+            onChange={handleFormChange}
+            value={formData.description}
+            error={formSubmitted && !formData.description ? "Description cannot be empty" : null}
+          />
         </Form.Field>
         <Form.Field>
           <label>Tags</label>
-          <input placeholder="Last Name" name="tags" onChange={handleFormChange} value={formData.tags} />
+          <Form.Input
+            placeholder="Tags"
+            name="tags"
+            onChange={handleFormChange}
+            value={formData.tags}
+            error={formSubmitted && !formData.description ? "Tags cannot be empty" : null}
+          />
         </Form.Field>
         <Form.Field>
           <label>Image</label>
-          <Input
-            placeholder="Last Name"
+          <Form.Input
             type="file"
             accept="image/*"
             name="featured_image"
             ref={fileInputRef}
             onChange={handleChooseImage}
-            icon={<Icon name="cloud upload" inverted circular link onClick={handleImageUpload} as="i" />}
+            error={formSubmitted && !formData.featured_image ? "Please upload an image to continue" : null}
+            icon={
+              <Icon
+                name="cloud upload"
+                inverted
+                circular
+                loading={imageUploading}
+                disabled={imageUploading || !selectedImage}
+                link
+                onClick={handleImageUpload}
+                as="i"
+              />
+            }
           />
         </Form.Field>
         <Form.Field>
+            <label>Preview</label>
           <Image src={formData.featured_image || articlePlaceholderImage} fluid />
         </Form.Field>
-        <Form.Field>
-          <Checkbox label="I agree to the Terms and Conditions" />
-        </Form.Field>
+        <Button type="reset" onClick={handleReset}>Reset</Button>
         <Button type="submit">Submit</Button>
       </Form>
     </Layout>

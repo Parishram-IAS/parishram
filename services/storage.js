@@ -1,17 +1,18 @@
 import firebase from 'firebase/app';
 const { firebaseStorage } = require("./firebase/firebase.config")
-const ARTICLE_IMAGES_BASE_PATH = "article/images"
+
+export const ARTICLE_IMAGES_BASE_PATH = "article/images"
 
 const fileUploadTaskEvents = {
     STATE_CHANGED: "state_changed"
 }
 
-export const uploadFileToFirebaseStorage = async (file, onProgressChange) => {
+export const uploadFileToFirebaseStorage = async (file,uploadPath, onProgressChange) => {
     if (!firebaseStorage){
         return null
     }
     const storageRef = firebaseStorage.ref();
-    const filePathRef = storageRef.child(`${ARTICLE_IMAGES_BASE_PATH}/${file.name}`);
+    const filePathRef = storageRef.child(uploadPath);
     const fileUploadTask = filePathRef.put(file)
     return new Promise((resolve, reject)=>{
         fileUploadTask.on(fileUploadTaskEvents.STATE_CHANGED, snapshot=>{
