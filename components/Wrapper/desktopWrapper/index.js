@@ -15,7 +15,7 @@ const DesktopWrapper = ({ children }) => {
                     <DesktopHeader />
                 </Sticky>
                 <Container attached='bottom'>
-                    <div>
+                    <div style={{ minHeight: '80vh' }}>
                         {children}
                     </div>
                     <Footer />

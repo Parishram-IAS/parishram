@@ -18,7 +18,7 @@ const Home = () => {
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                     <Link href="/editorial">
                         <a>
-                            <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/book.svg" />
+                            <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assests/svg/book.svg" />
                             <Header as='h3' className='text-center'>IAS EXAM</Header>
                         </a>
                     </Link>
@@ -26,7 +26,7 @@ const Home = () => {
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                     <Link href="/editorial">
                         <a>
-                            <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/newspaper.svg" />
+                            <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assests/svg/newspaper.svg" />
                             <Header as='h3' className='text-center'> CURRENT AFFAIRS</Header>
                         </a>
                     </Link>
@@ -34,7 +34,7 @@ const Home = () => {
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                     <Link href="/editorial/hindu">
                         <a>
-                            <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/paper.svg" />
+                            <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assests/svg/paper.svg" />
                             <Header as='h3' className='text-center'> EDITORIALS</Header>
                         </a>
                     </Link>
@@ -42,7 +42,7 @@ const Home = () => {
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                     <Link href="/editorial">
                         <a>
-                            <Image className={`margin-center ${styles.svgSize}`} src="/assests/svg/writing.svg" />
+                            <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assests/svg/writing.svg" />
                             <Header as='h3' className='text-center'> MAINS ANSWER WRITING</Header>
                         </a>
                     </Link>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Router from 'next/router'
+import Router from 'next/router';
 import { Tab, Button } from "semantic-ui-react";
 
 import Layout from "../../../components/Layout";
@@ -15,7 +15,6 @@ const editorialTabSelection = {
 class Editorial extends React.Component {
     constructor(props) {
         super(props);
-        debugger
         this.state = {
             defaultActiveIndex: editorialTabSelection[props.url],
             articleList: JSON.parse(this.props.data) || []
@@ -30,7 +29,7 @@ class Editorial extends React.Component {
             3: 'all',
         };
         const active = data.activeIndex;
-        Router.push(`/editorial/${editorialTabRoute[active]}`, undefined, { shallow: true });
+        Router.push(`/editorial/${editorialTabRoute[active]}`, undefined, { shallow: false });
         this.setState({ defaultActiveIndex: active });
 
     }
