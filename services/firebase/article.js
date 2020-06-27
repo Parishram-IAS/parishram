@@ -42,3 +42,4 @@ export const addNewArticle = async (editorialId, newArticle) => {
     throw error;
   }
 };
+
