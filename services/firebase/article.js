@@ -20,7 +20,6 @@ export const getArticleList = async (editorialId) => {
 
 };
 
-
 export const getIndividualArticle = async (editorialId, slug) => {
   try{
     const doc = await firestore.doc(`editorial/${editorialId}/article/${slug}`).get();

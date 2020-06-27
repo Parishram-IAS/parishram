@@ -4,7 +4,7 @@ import { Card, Header, Image, Grid, Placeholder } from 'semantic-ui-react';
 
 import styles from './EditorialCard.module.css';
 const EditorialCard = ({ articleList, loader, type }) => {
-    const noDataImg = '/assests/svg/book.svg';
+    const noDataImg = '/assets/svg/book.svg';
 
     const renderArticleList = () => {
         return articleList.map((article) => {
