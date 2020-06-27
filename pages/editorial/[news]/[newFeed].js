@@ -12,7 +12,7 @@ debugger
         <Layout>
             <Grid className='grid-margin-removal'>
                 <Grid.Row>
-                    <Image src="/assests/images/newsFeed_cover.png" className="news-feed-carousel" />
+                    <Image src="/assets/images/newsFeed_cover.png" className="news-feed-carousel" />
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column width={3}>
