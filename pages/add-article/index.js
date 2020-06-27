@@ -61,7 +61,7 @@ const AddArticle = () => {
         </Form.Field>
         <Form.Field>
           <label>Description</label>
-          <Form.Input
+          <Form.TextArea
             placeholder="Description"
             name="description"
             onChange={handleFormChange}
