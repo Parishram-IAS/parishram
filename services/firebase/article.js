@@ -15,13 +15,21 @@ export const getArticleList = async (editorialId) => {
   return articleList;
 };
 
-
 export const getIndividualArticle = async (editorialId, slug) => {
   const doc = await firestore.doc(`editorial/${editorialId}/article/${slug}`).get();
-    if (doc.exists) {
-      console.log("Document data:", doc.data());
-      return doc.data()
-    } else {
-      return null
-    }
+  if (doc.exists) {
+    console.log("Document data:", doc.data());
+    return doc.data();
+  } else {
+    return null;
+  }
+};
+
+export const addNewArticle = async (editorialId, newArticle) => {
+  try {
+    const docRef = await firestore.collection(`editorial/${editorialId}/article`).add(newArticle);
+    return docRef.id;
+  } catch (error) {
+    throw error;
+  }
 };
