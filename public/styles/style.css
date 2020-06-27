@@ -1,4 +1,9 @@
 body{
+  -webkit-user-select: none; 
+  -webkit-touch-callout: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;    
   font-family: 'Lato';
   font-size: 22px;
 }
@@ -41,16 +46,19 @@ a {
   background-repeat: no-repeat;
 }
 
-.newFeed-profile-picture{
-  margin-top: -7.5rem;
+.newFeed-profile-picture-wrapper{
+  margin-top: -5.5rem;
   border: 0.5rem solid #F5F8FC;
   border-radius: 100%;
   box-shadow: 2px 2px 7px 0 rgba(105, 146, 203, 0.3);
   overflow: hidden;
   width: 140px;
-  height: 140px;
+  min-height: 100px;
 }
-
+.newFeed-profile-picture{
+    width: 140px;
+    height: 140px;
+}
 .ProfileHeaderWraper{
   padding-left: 15px
 }
