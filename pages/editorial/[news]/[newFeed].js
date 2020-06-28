@@ -18,7 +18,7 @@ const NewFeed = ({ data }) => {
         <Layout>
             {newsFeed && <Grid className='grid-margin-removal'>
                 <Grid.Row>
-                    <Image alt="parishram-Ias-caursoel" src="/assests/images/newsFeed_cover.png" className="news-feed-carousel" />
+                    <Image src="/assets/images/newsFeed_cover.png" className="news-feed-carousel" alt="parishram-Ias-caursoel" />
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column width={3}>

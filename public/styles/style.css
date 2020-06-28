@@ -73,6 +73,9 @@ a {
 
 .newsFeed-body-wrapper{
   background-image: url('/assets/images/news_feed_bg.png');
+  width: 100% ;
+}
+.newsFeed-segment{
   width: 100%;
 }
 /* NEWS FEED END*/
