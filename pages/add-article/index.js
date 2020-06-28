@@ -16,6 +16,7 @@ const AddArticle = () => {
   const [imageUploading, setImageUploading] = useState(false);
   const fileInputRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [publishingArticle, setPublishingArticle] = useState(false)
 
   const handleFormChange = (event) => {
     const {name, value} = event.target;
@@ -54,6 +55,7 @@ const AddArticle = () => {
     if(anyFieldEmpty){
         return 
     }
+    setPublishingArticle(true)
     const newArticle = {
         title:formData.title,
         description: formData.description,
@@ -64,9 +66,15 @@ const AddArticle = () => {
         updated: new Date(),
         video_url: formData.video_url
     }
-    const newArticlId = await addNewArticle(formData.category, newArticle)
-    alert(`New article is created with id:- ${newArticlId}`)
-    setFormData(initialFormData)
+    try {
+      const newArticlId = await addNewArticle(formData.category, newArticle)
+      alert(`New article is created with id:- ${newArticlId}`)
+      setFormSubmitted(false)
+      setFormData(initialFormData)
+    } catch (error) {
+      alert("Unable to publish article. Please try later!")
+    }
+    setPublishingArticle(false)
   };
 
   return (
@@ -151,8 +159,8 @@ const AddArticle = () => {
             error={formSubmitted && !formData.video_url ? "Video URL cannot be empty" : null}
           />
         </Form.Field>
-        <Button type="reset" onClick={handleReset}>Reset</Button>
-        <Button type="submit">Submit</Button>
+        <Button type="reset" onClick={handleReset} disabled={publishingArticle}>Reset</Button>
+        <Button type="submit" disabled={publishingArticle} loading={publishingArticle}>Submit</Button>
       </Form>
     </Layout>
   );
