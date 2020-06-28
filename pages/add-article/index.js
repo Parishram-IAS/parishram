@@ -56,6 +56,7 @@ const AddArticle = () => {
     }
     const newArticle = {
         title:formData.title,
+        description: formData.description,
         created: new Date(),
         news_time: new Date(),
         tags: formData.tags.trim().split(","),
@@ -65,6 +66,7 @@ const AddArticle = () => {
     }
     const newArticlId = await addNewArticle(formData.category, newArticle)
     alert(`New article is created with id:- ${newArticlId}`)
+    setFormData(initialFormData)
   };
 
   return (
