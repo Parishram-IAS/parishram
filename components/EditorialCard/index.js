@@ -18,7 +18,6 @@ const EditorialCard = ({ articleList, loader, type }) => {
                                 computer={2}
                             >
                                 <Image
-                                    alt="parishram-Ias-caursoel"
                                     floated="left"
                                     src={article.featured_image || noDataImg}
                                     className={styles.card_image}
