@@ -1,0 +1,26 @@
+.myFooter{
+    border-radius: 0px;
+    margin-top: 0px;
+    background-color:  #F2F7FE;
+    padding: 0px; 
+    border: 0px;
+    padding:45px 0px 36px 0px;
+}
+
+.myFooter_List_Text{
+    color: #7F7F7F;
+    margin-bottom: 0.625rem !important;
+    font-size: 14px !important;
+}
+
+.myFooter_copyright{
+    border-top: 0.0625rem solid #DEDEDE;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #4E4E4E !important;
+}
+
+.myFooter_follow_icon{
+    font-size: 20px;
+}

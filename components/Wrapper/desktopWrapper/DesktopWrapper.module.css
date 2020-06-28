@@ -1,3 +1,7 @@
 .desktopParentWrapper {
     margin-top: 5px!important;
 }
+
+.desktopParent_childen_wrapper{
+    min-height: 80vh;
+}

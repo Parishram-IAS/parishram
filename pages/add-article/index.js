@@ -139,7 +139,7 @@ const AddArticle = () => {
         </Form.Field>
         <Form.Field>
             <label>Preview</label>
-          <Image src={formData.featured_image || articlePlaceholderImage} fluid />
+          <Image alt="parishram-Ias-caursoel" src={formData.featured_image || articlePlaceholderImage} fluid />
         </Form.Field>
         <Form.Field>
           <label>Title</label>
