@@ -6,9 +6,22 @@ import { addNewArticle } from "../../services/firebase/article";
 
 const articlePlaceholderImage = "/assets/images/article-placeholder-image.png";
 
-const initialFormData = {category:"hindu", title: "", description: "", tags: "", featured_image: "" , video_url:""}
+const initialFormData = {
+  category: "hindu",
+  title: "",
+  content: "",
+  tags: "",
+  keywords: "",
+  featured_image: "",
+  seo_description: "",
+  video_url: "",
+  featured_image_alt: "",
+};
 
-const categoryOptions = [{key:"hindu", value:"hindu", text:"The Hindu"}, {key:"livemint", value:"livemint", text:"The Live Mint"}]
+const categoryOptions = [
+  { key: "hindu", value: "hindu", text: "The Hindu" },
+  { key: "livemint", value: "livemint", text: "The Live Mint" },
+];
 
 const AddArticle = () => {
   const [formData, setFormData] = useState(initialFormData);
@@ -16,11 +29,11 @@ const AddArticle = () => {
   const [imageUploading, setImageUploading] = useState(false);
   const fileInputRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [publishingArticle, setPublishingArticle] = useState(false)
+  const [publishingArticle, setPublishingArticle] = useState(false);
 
   const handleFormChange = (event) => {
-    const {name, value} = event.target;
-    console.log("namr", name, "value", value)
+    const { name, value } = event.target;
+    console.log("namr", name, "value", value);
     setFormData((curData) => ({ ...curData, [name]: value }));
   };
 
@@ -28,9 +41,9 @@ const AddArticle = () => {
     setSelectedImage(event.target.files[0]);
   };
 
-  const handleCategoryChange = (_, {value}) => {
+  const handleCategoryChange = (_, { value }) => {
     setFormData((curData) => ({ ...curData, category: value }));
-  }
+  };
 
   const handleImageUpload = async (event) => {
     setImageUploading(true);
@@ -44,45 +57,49 @@ const AddArticle = () => {
   };
 
   const handleReset = () => {
-        setFormData(initialFormData)
-        setFormSubmitted(false)
-  }
+    setFormData(initialFormData);
+    setFormSubmitted(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setFormSubmitted(true)
-    let anyFieldEmpty = Object.values(formData).some(el=> !Boolean(el))
-    if(anyFieldEmpty){
-        return 
+    setFormSubmitted(true);
+    let anyFieldEmpty = Object.values(formData).some((el) => !Boolean(el));
+    if (anyFieldEmpty) {
+      return;
     }
-    setPublishingArticle(true)
+    setPublishingArticle(true);
     const newArticle = {
-        title:formData.title,
-        description: formData.description,
-        created: new Date(),
-        news_time: new Date(),
-        tags: formData.tags.trim().split(","),
-        featured_image: formData.featured_image,
-        updated: new Date(),
-        video_url: formData.video_url
-    }
+      title: formData.title,
+      content: formData.content,
+      created: new Date(),
+      news_time: new Date(),
+      tags: formData.tags.trim().split(","),
+      keywords: formData.keywords.trim().split(","),
+      featured_image: formData.featured_image,
+      featured_image_alt: formData.featured_image_alt,
+      seo_description: formData.seo_description,
+      updated: new Date(),
+      video_url: formData.video_url,
+    };
     try {
-      const newArticlId = await addNewArticle(formData.category, newArticle)
-      alert(`New article is created with id:- ${newArticlId}`)
-      setFormSubmitted(false)
-      setFormData(initialFormData)
+      const newArticlId = await addNewArticle(formData.category, newArticle);
+      alert(`New article is created with id:- ${newArticlId}`);
+      setFormSubmitted(false);
+      setFormData(initialFormData);
     } catch (error) {
-      alert("Unable to publish article. Please try later!")
+      alert("Unable to publish article. Please try later!");
     }
-    setPublishingArticle(false)
+    setPublishingArticle(false);
   };
 
   return (
     <Layout>
       <Form onSubmit={handleSubmit}>
-      <Form.Field>
+        <Form.Field>
           <label>Category</label>
           <Form.Dropdown
+            required
             placeholder="Category"
             name="category"
             onChange={handleCategoryChange}
@@ -95,6 +112,7 @@ const AddArticle = () => {
         <Form.Field>
           <label>Title</label>
           <Form.Input
+            required
             placeholder="Title"
             name="title"
             onChange={handleFormChange}
@@ -103,28 +121,53 @@ const AddArticle = () => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Description</label>
+          <label>Content</label>
           <Form.TextArea
-            placeholder="Description"
-            name="description"
+            required
+            placeholder="content"
+            name="content"
             onChange={handleFormChange}
-            value={formData.description}
-            error={formSubmitted && !formData.description ? "Description cannot be empty" : null}
+            value={formData.content}
+            error={formSubmitted && !formData.content ? "Content cannot be empty" : null}
           />
         </Form.Field>
         <Form.Field>
           <label>Tags</label>
           <Form.Input
-            placeholder="Tags"
+            required
+            placeholder="Tags: Comma Separated"
             name="tags"
             onChange={handleFormChange}
             value={formData.tags}
-            error={formSubmitted && !formData.description ? "Tags cannot be empty" : null}
+            error={formSubmitted && !formData.tags ? "Tags cannot be empty" : null}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>SEO Keywords</label>
+          <Form.Input
+            required
+            placeholder="Keywords: Comma Separated"
+            name="keywords"
+            onChange={handleFormChange}
+            value={formData.keywords}
+            error={formSubmitted && !formData.keywords ? "Keywords cannot be empty" : null}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>SEO Description</label>
+          <Form.TextArea
+            required
+            placeholder="seo description"
+            name="seo_description"
+            onChange={handleFormChange}
+            value={formData.seo_description}
+            error={formSubmitted && !formData.seo_description ? "Content cannot be empty" : null}
           />
         </Form.Field>
         <Form.Field>
           <label>Image</label>
           <Form.Input
+            required
             type="file"
             accept="image/*"
             name="featured_image"
@@ -146,12 +189,24 @@ const AddArticle = () => {
           />
         </Form.Field>
         <Form.Field>
-            <label>Preview</label>
+          <label>Featured Image Alt Tag</label>
+          <Form.Input
+            required
+            placeholder="alt tag for the image"
+            name="featured_image_alt"
+            onChange={handleFormChange}
+            value={formData.featured_image_alt}
+            error={formSubmitted && !formData.featured_image_alt ? "Video URL cannot be empty" : null}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Preview</label>
           <Image alt="parishram-Ias-caursoel" src={formData.featured_image || articlePlaceholderImage} fluid />
         </Form.Field>
         <Form.Field>
-          <label>Title</label>
+          <label>Video URL</label>
           <Form.Input
+            required
             placeholder="Video URL"
             name="video_url"
             onChange={handleFormChange}
@@ -159,8 +214,12 @@ const AddArticle = () => {
             error={formSubmitted && !formData.video_url ? "Video URL cannot be empty" : null}
           />
         </Form.Field>
-        <Button type="reset" onClick={handleReset} disabled={publishingArticle}>Reset</Button>
-        <Button type="submit" disabled={publishingArticle} loading={publishingArticle}>Submit</Button>
+        <Button type="reset" onClick={handleReset} disabled={publishingArticle}>
+          Reset
+        </Button>
+        <Button type="submit" disabled={publishingArticle} loading={publishingArticle}>
+          Submit
+        </Button>
       </Form>
     </Layout>
   );
