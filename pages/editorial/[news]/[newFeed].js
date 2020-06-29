@@ -4,7 +4,7 @@ import _isEmpty from 'lodash/isEmpty';
 
 import Layout from '../../../components/Layout';
 import { getIndividualArticle } from '../../../services/firebase/article';
-import { Grid, Image, Header, Container, Segment } from 'semantic-ui-react';
+import { Grid, Image, Header, Segment } from 'semantic-ui-react';
 import ReactHtmlParser from 'react-html-parser';
 
 const noImgData = "https://images.unsplash.com/photo-1567468150176-8d1c64777720?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80";

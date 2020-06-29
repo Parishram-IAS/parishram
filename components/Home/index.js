@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import styles from './Home.module.css';
 import VideoPlayer from '../VideoPlayer';
+
 const Home = () => {
     return (
         <Grid className="grid-margin-removal">
@@ -12,18 +13,10 @@ const Home = () => {
                 <Carousel />
             </Grid.Row>
             <Grid.Row>
-                <Header className={styles.cardTitle}> Free Initiatives</Header>
+                <Header className={styles.cardTitle}> Our Initiatives</Header>
             </Grid.Row>
             <Grid.Row>
-                <Grid.Column mobile={8} tablet={4} computer={4}>
-                    <Link href="/editorial">
-                        <a>
-                            <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assets/svg/book.svg" />
-                            <Header as='h3' className='text-center'>IAS EXAM</Header>
-                        </a>
-                    </Link>
-                </Grid.Column>
-                <Grid.Column mobile={8} tablet={4} computer={4}>
+                <Grid.Column mobile={16} tablet={5} computer={5}>
                     <Link href="/editorial">
                         <a>
                             <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assets/svg/newspaper.svg" />
@@ -31,7 +24,7 @@ const Home = () => {
                         </a>
                     </Link>
                 </Grid.Column>
-                <Grid.Column mobile={8} tablet={4} computer={4}>
+                <Grid.Column mobile={16} tablet={6} computer={6}>
                     <Link href="/editorial/hindu">
                         <a>
                             <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assets/svg/paper.svg" />
@@ -39,7 +32,7 @@ const Home = () => {
                         </a>
                     </Link>
                 </Grid.Column>
-                <Grid.Column mobile={8} tablet={4} computer={4}>
+                <Grid.Column mobile={16} tablet={5} computer={5}>
                     <Link href="/editorial">
                         <a>
                             <Image alt="parishram-Ias-caursoel" className={`margin-center ${styles.svgSize}`} src="/assets/svg/writing.svg" />

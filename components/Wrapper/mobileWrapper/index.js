@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sidebar, List, Container, Menu } from "semantic-ui-react";
+import { Sidebar, List, Container, Menu, Image } from "semantic-ui-react";
 
 import Link from "next/link";
 import Footer from "../../Footer";
@@ -13,10 +13,12 @@ const MobileWrapper = ({ children }) => {
   };
   return (
     <Container fluid className={styles.mobileParentWraper}>
-      <Menu secondary>
+      <Menu secondary className={styles.menu_wrapper}>
         <Link href="/">
           <a>
-            <Menu.Item>Logo</Menu.Item>
+            <Menu.Item>
+            <div className='parishromImage'></div>
+            </Menu.Item>
           </a>
         </Link>
         <Menu.Item position="right" onClick={handleVisible}>
