@@ -7,7 +7,13 @@
 .editorialCardTitle{
     padding-top: 20px
 }
-
+.editorialCardImage{
+    object-fit:cover;
+    width: 100px;
+    height: 130px;
+    background-size:no-repeat;
+    background-size:100% 100%;
+}
 .readMoreText{
     font-weight: 400;
     color:red !important;
@@ -24,4 +30,11 @@
 }
 .card_image{
     height: 100px;
+}
+.cardWrapper_tag_text{
+    font-size: 75% !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
 }

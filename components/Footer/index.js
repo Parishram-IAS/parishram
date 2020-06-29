@@ -11,7 +11,7 @@ const Footer = () => {
                 <Grid className="grid-margin-removal">
                     <Grid.Row>
                         <Grid.Column mobile={16} tablet={4} computer={4}>
-                            <Image alt="parishram-ias" src="" />
+                            <div className='parishromImage' />
                         </Grid.Column>
                         <Grid.Column mobile={16} tablet={4} computer={4}>
                             <Header as='h4'>Company</Header>

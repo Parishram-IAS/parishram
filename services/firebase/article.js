@@ -8,7 +8,7 @@ import { firestore } from "./firebase.config";
  */
 export const getArticleList = async (editorialId) => {
   try {
-    const querySnapshot = await firestore.collection(`editorial/${editorialId}/article`).get();
+    const querySnapshot = await firestore.collection(`editorial/${editorialId}/article`).orderBy("news_time", "desc").get();
     const articleList = [];
     querySnapshot.forEach((doc) => {
       articleList.push({ ...doc.data(), id: doc.id });
@@ -19,7 +19,6 @@ export const getArticleList = async (editorialId) => {
   }
 
 };
-
 export const getIndividualArticle = async (editorialId, slug) => {
   try {
     const doc = await firestore.doc(`editorial/${editorialId}/article/${slug}`).get();
@@ -43,3 +42,24 @@ export const addNewArticle = async (editorialId, newArticle) => {
   }
 };
 
+export const allEditorialArticle = async() => {
+    try {
+      const articleList = [];
+      const editorialCollectionSnapShot = await firestore.collection('editorial').get();
+      const articleQueries = []
+      editorialCollectionSnapShot.forEach(async (editorialDocument) => {
+        articleQueries.push(firestore.collection(`editorial/${editorialDocument.id}/article`).get())
+      });
+      const articleResponse = await Promise.all(articleQueries)
+
+      for (let index = 0; index < articleResponse.length ; index++) {
+        const articleCollectionSnapShot = articleResponse[index];
+         articleCollectionSnapShot.forEach(function (articleDocument) {
+          articleList.push(articleDocument.data());
+        });
+      };
+      return articleList
+    } catch (err) {
+      throw err;
+    }
+}

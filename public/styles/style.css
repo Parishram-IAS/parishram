@@ -22,7 +22,12 @@ a {
 .text-center {
   text-align: center;
 }
-
+.parishromImage{
+  background:url('/assets/images/logo_parishram .png');
+  width: 97px;
+  height: 59px;
+  background-size: 100% 100%;
+}
 
 /* Editorail Card START*/
 
@@ -53,11 +58,12 @@ a {
   box-shadow: 2px 2px 7px 0 rgba(105, 146, 203, 0.3);
   overflow: hidden;
   width: 140px;
-  min-height: 100px;
+  max-height: 140px;
 }
 .newFeed-profile-picture{
-    width: 140px;
-    height: 140px;
+  width: 140px;
+  object-fit: cover;
+  height: 140px;
 }
 .ProfileHeaderWraper{
   padding-left: 15px
@@ -72,7 +78,6 @@ a {
 }
 
 .newsFeed-body-wrapper{
-  background-image: url('/assets/images/news_feed_bg.png');
   width: 100% ;
 }
 .newsFeed-segment{
