@@ -7,6 +7,11 @@
 .headerText{
     font-size: 15px;
 }
+.headerText > a:hover{
+    background: none!important;
+    color: #EF481A!important;
+}
+
 .menu_header_right{
     padding-top : 20px;
 }

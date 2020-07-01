@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
 import Link from 'next/link';
-import { Card, Header, Grid, Placeholder, Button } from 'semantic-ui-react';
+import { Card, Header, Grid, Button } from 'semantic-ui-react';
+import _isEmpty from 'lodash/isEmpty';
 
 import styles from './EditorialCard.module.css';
-const EditorialCard = ({ articleList, loader, type }) => {
+const EditorialCard = ({ article, type }) => {
     const noDataImg = '/assets/svg/book.svg';
-
-    const renderArticleList = () => {
-        return articleList.map((article) => {
-            return (
+    return (
+        <Fragment>
+            {
+                !_isEmpty(article) &&
                 <Card fluid className={styles.cardWraperrBorder} key={article.id}>
                     <Link href={`/editorial/${type}/${article.id}`}>
                         <a>
@@ -57,25 +58,6 @@ const EditorialCard = ({ articleList, loader, type }) => {
                         </a>
                     </Link>
                 </Card >
-            )
-        })
-    }
-    return (
-        <Fragment>
-            {
-                loader ? (
-                    <Placeholder fluid>
-                        <Placeholder.Header image>
-                            <Placeholder.Line />
-                            <Placeholder.Line />
-                        </Placeholder.Header>
-
-                    </Placeholder>
-                )
-                    : (
-                        (articleList && articleList.length > 0) ? renderArticleList()
-                            : 'No Data to display'
-                    )
             }
         </Fragment>
     )

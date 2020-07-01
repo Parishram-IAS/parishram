@@ -2,7 +2,10 @@
 
 .cardWraperrBorder:hover{
     box-shadow: 0 10px 30px 0 rgba(0,0,0,.1);
-    border-bottom: 4px solid red;
+    border-bottom: 4px solid #EF481A;
+}
+.cardWraperrBorder{
+    padding: 10px;
 }
 .editorialCardTitle{
     padding-top: 20px
@@ -16,7 +19,7 @@
 }
 .readMoreText{
     font-weight: 400;
-    color:red !important;
+    color:#EF481A !important;
     text-decoration: underline;
 }
 

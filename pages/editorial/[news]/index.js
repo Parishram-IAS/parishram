@@ -21,7 +21,7 @@ class Editorial extends React.Component {
         }
     }
 
-    handleTabChange = (route,activeIndex) => {
+    handleTabChange = (route, activeIndex) => {
         Router.push(`/editorial/${route}`);
         this.setState({ defaultActiveIndex: activeIndex });
 
@@ -34,37 +34,54 @@ class Editorial extends React.Component {
         } = this.state;
         const panes = [
             {
-                menuItem: <Button>ALL</Button>,
+                menuItem: 'ALL',
                 render: () => (
                     <Tab.Pane attached={false} className="editorialcard-tab-pane">
-                        <EditorialCard type="all" articleList={articleList}/>
+                        {
+                            (articleList && articleList.length > 0)
+                            &&
+                            articleList.map((article) => <EditorialCard type={article.category} article={article} />)
+                        }
+
                     </Tab.Pane>
                 ),
                 route: 'all'
             },
             {
-                menuItem: <Button>HINDU</Button>,
+                menuItem: 'HINDU',
                 render: () => (
                     <Tab.Pane attached={false} className="editorialcard-tab-pane">
-                        <EditorialCard type="hindu" articleList={articleList} />
+                        {
+                            (articleList && articleList.length > 0)
+                            &&
+                            articleList.map((article) => <EditorialCard type="hindu" article={article} />)
+                        }
                     </Tab.Pane>
                 ),
                 route: 'hindu'
             },
             {
-                menuItem: <Button>LIVE MINT</Button>,
+                menuItem: 'LIVE MINT',
                 render: () => (
                     <Tab.Pane attached={false} className="editorialcard-tab-pane">
-                        <EditorialCard type="livemint" articleList={articleList} />
+                        {
+                            (articleList && articleList.length > 0)
+                            &&
+                            articleList.map((article) => <EditorialCard type="livemint" article={article} />)
+                        }
                     </Tab.Pane>
                 ),
                 route: 'livemint'
             },
             {
-                menuItem: <Button>INDIA TODAY</Button>,
+                menuItem: 'INDIA TODAY',
                 render: () => (
                     <Tab.Pane attached={false} className="editorialcard-tab-pane">
-                        <EditorialCard type="indiatoday" articleList={articleList} />
+                        {
+                            (articleList && articleList.length > 0)
+                            &&
+                            articleList.map((article) => <EditorialCard type="indiatoday" article={article} />)
+                        }
                     </Tab.Pane>
                 ),
                 route: 'indiatoday'
@@ -77,7 +94,7 @@ class Editorial extends React.Component {
                     defaultActiveIndex={defaultActiveIndex}
                     menu={{ secondary: true }}
                     panes={panes}
-                    onTabChange={(_,data)=>this.handleTabChange(panes[data.activeIndex].route,data.activeIndex)}
+                    onTabChange={(_, data) => this.handleTabChange(panes[data.activeIndex].route, data.activeIndex)}
                 />
             </Layout>
         );
@@ -90,7 +107,7 @@ export async function getServerSideProps({ req, query, params }) {
     let articleList = [];
     const queryValue = query.news || 'all';
     try {
-        articleList =  queryValue === 'all' ? await allEditorialArticle() : await getArticleList(queryValue);
+        articleList = queryValue === 'all' ? await allEditorialArticle() : await getArticleList(queryValue);
     } catch (err) {
         articleList = err
     }

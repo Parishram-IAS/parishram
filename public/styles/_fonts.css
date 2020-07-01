@@ -1,0 +1,62 @@
+html body {
+    font-family: 'Montserrat';
+  }
+  body .ui.list .list > .item .header,
+  body .ui.list > .item .header {
+    font-family: 'Montserrat';
+  }
+  body button,
+  body input,
+  body optgroup,
+  body select,
+  body textarea {
+    font-family: 'Montserrat';
+  }
+  body .ui.menu {
+    font-family: 'Montserrat';
+  }
+  body h1,
+  body h2,
+  body h3,
+  body h4,
+  body h5 {
+    font-family: 'Montserrat';
+    font-weight: 600;
+  }
+  body .ui.header {
+    font-family: 'Montserrat';
+    font-weight: 600;
+  }
+  body .ui.card > .content > .header {
+    font-family: 'Montserrat';
+  }
+  body .ui.cards > .card > .content > .header {
+    font-family: 'Montserrat';
+  }
+  body .ui.button {
+    font-family: 'Montserrat';
+  }
+  body .ui.popup > .header {
+    font-family: 'Montserrat';
+  }
+  body .ui.modal > .header {
+    font-family: 'Montserrat';
+  }
+  body .ui.form input:not([type]),
+  body .ui.form input[type=date],
+  body .ui.form input[type=datetime-local],
+  body .ui.form input[type=email],
+  body .ui.form input[type=file],
+  body .ui.form input[type=number],
+  body .ui.form input[type=password],
+  body .ui.form input[type=search],
+  body .ui.form input[type=tel],
+  body .ui.form input[type=text],
+  body .ui.form input[type=time],
+  body .ui.form input[type=url] {
+    font-family: 'Montserrat';
+  }
+  body .ui.accordion .title:not(.ui) {
+    font-family: 'Montserrat';
+  }
+  

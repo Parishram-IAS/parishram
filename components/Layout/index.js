@@ -26,7 +26,7 @@ class Layout extends React.Component {
                     <meta property="og:url" content={url} />
                     <meta property="og:image" content={avatar} />
                     <meta property="og:description" content={description}/>
-                    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'></link>
+                    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
                 </Head>
                 <ErrorBoundary>
                     <Responsive minWidth={320} maxWidth={991}>
