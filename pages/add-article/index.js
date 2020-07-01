@@ -70,6 +70,7 @@ const AddArticle = () => {
     }
     setPublishingArticle(true);
     const newArticle = {
+      category: formData.category,
       title: formData.title,
       content: formData.content,
       created: new Date(),

@@ -23,9 +23,9 @@ export const getIndividualArticle = async (editorialId, slug) => {
   try {
     const doc = await firestore.doc(`editorial/${editorialId}/article/${slug}`).get();
     if (doc.exists) {
-      return doc.data()
+      return { ...doc.data(), id: doc.id }
     } else {
-      return null
+      return {}
     }
   }
   catch (err) {
@@ -42,24 +42,46 @@ export const addNewArticle = async (editorialId, newArticle) => {
   }
 };
 
-export const allEditorialArticle = async() => {
-    try {
-      const articleList = [];
-      const editorialCollectionSnapShot = await firestore.collection('editorial').get();
-      const articleQueries = []
-      editorialCollectionSnapShot.forEach(async (editorialDocument) => {
-        articleQueries.push(firestore.collection(`editorial/${editorialDocument.id}/article`).get())
-      });
-      const articleResponse = await Promise.all(articleQueries)
+export const allEditorialArticle = async () => {
+  try {
+    const articleList = [];
+    const editorialCollectionSnapShot = await firestore.collection('editorial').get();
+    const articleQueries = []
+    editorialCollectionSnapShot.forEach(async (editorialDocument) => {
+      articleQueries.push(firestore.collection(`editorial/${editorialDocument.id}/article`).get())
+    });
+    const articleResponse = await Promise.all(articleQueries)
 
-      for (let index = 0; index < articleResponse.length ; index++) {
-        const articleCollectionSnapShot = articleResponse[index];
-         articleCollectionSnapShot.forEach(function (articleDocument) {
-          articleList.push(articleDocument.data());
-        });
-      };
-      return articleList
-    } catch (err) {
-      throw err;
-    }
+    for (let index = 0; index < articleResponse.length; index++) {
+      const articleCollectionSnapShot = articleResponse[index];
+      articleCollectionSnapShot.forEach(function (articleDocument) {
+        articleList.push({ ...articleDocument.data(), id: articleDocument.id });
+      });
+    };
+    return articleList
+  } catch (err) {
+    throw err;
+  }
+}
+
+export const editorialArticleTags = async (tags) => {
+  try {
+    const articleList = [];
+    const editorialCollectionSnapShot = await firestore.collection('editorial').get();
+    const articleQueries = []
+    editorialCollectionSnapShot.forEach(async (editorialDocument) => {
+      articleQueries.push(firestore.collection(`editorial/${editorialDocument.id}/article`).where('tags', 'array-contains-any', tags).get())
+    });
+    const articleResponse = await Promise.all(articleQueries)
+
+    for (let index = 0; index < articleResponse.length; index++) {
+      const articleCollectionSnapShot = articleResponse[index];
+      articleCollectionSnapShot.forEach(function (articleDocument) {
+        articleList.push({ ...articleDocument.data(), id: articleDocument.id });
+      });
+    };
+    return articleList
+  } catch (err) {
+    throw err;
+  }
 }
