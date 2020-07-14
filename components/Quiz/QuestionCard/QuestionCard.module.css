@@ -1,0 +1,22 @@
+.reviewCorrect{
+    background: green;
+}
+
+.reviewInCorrect{
+    background: red;
+}
+
+.answerOptionsWrapper{
+    width: 100%!important;
+    background: rgba(251, 216, 75, 0.1)!important;
+}
+
+.optionRadioButton{
+    font-weight: 600;
+}
+
+.noQuestionAvailable{
+    width: inherit!important;
+    height: 20vh;
+     text-align: center; 
+}
