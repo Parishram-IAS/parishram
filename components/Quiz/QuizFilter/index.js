@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { Button, Grid } from 'semantic-ui-react';
+import React, { Fragment } from 'react';
+import { Container, Responsive } from 'semantic-ui-react';
+import { CustomCalendar } from '../../CustomCalendar';
 
 const QuizFilter = () => {
     return (
-            <Grid>
-               <Grid></Grid>
-            </Grid>
+        <Fragment>
+            <Responsive minWidth={992}>
+                <Container>
+                    <CustomCalendar />
+                </Container>
+            </Responsive>
+            <Responsive minWidth={320} maxWidth={991}>
+                <Container>
+                </Container>
+            </Responsive>
+        </Fragment>
     )
 }
 

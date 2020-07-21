@@ -11,7 +11,7 @@ const DesktopHeader = () => {
     setactiveItem(name);
   };
   return (
-    <Menu secondary attached="top" className={styles.menuWrapper}>
+    <Menu secondary attached="top" className={`${styles.menuWrapper} `}>
       <Link href="/">
         <a>
           <Menu.Item className="parishramLogo">
@@ -20,9 +20,9 @@ const DesktopHeader = () => {
         </a>
       </Link>
       <Menu.Menu position="right" className={styles.menu_header_right}>
-        <Link href="/editorial/hindu">
-          <a className={`${styles.headerText} ${activeItem === "IAS EXAM" ? 'active' : ''}`}>
-            <Menu.Item name="IAS EXAM" active={activeItem === "IAS EXAM"} onClick={handleItemClick} />
+        <Link href="/quiz">
+          <a className={`${styles.headerText} ${activeItem === "QUIZ" ? ' desktopheader active' : ''}`}>
+            <Menu.Item name="QUIZ" active={activeItem === "QUIZ"} onClick={handleItemClick} />
           </a>
         </Link>
         <Link href="/editorial/hindu">

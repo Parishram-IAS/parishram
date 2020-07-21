@@ -24,7 +24,7 @@ const Quiz = () => {
                 <Grid.Row>
                     <QuizContextProvider>
 
-                        <Grid.Column mobile={16} tablet={16} computer={13}>
+                        <Grid.Column mobile={16} tablet={16} computer={11}>
                             {showTest ? (
                                 <Button onClick={() => setShowTest(false)}>
                                     Start test
@@ -34,7 +34,7 @@ const Quiz = () => {
                                 )
                             }
                         </Grid.Column>
-                        <Grid.Column mobile={16} tablet={16} computer={3}>
+                        <Grid.Column mobile={16} tablet={16} computer={5}>
                             <QuizFilter />
                         </Grid.Column>
                     </QuizContextProvider>
