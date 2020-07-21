@@ -11,6 +11,6 @@ export const timeDuration = (startTime) => {
 };
 
 export const dateFormatForInputTag = (date) => {
-  date.setDate(date.getDate() + 3);
+  date.setDate(date.getDate());
   return date.toISOString().substr(0, 10);
 };

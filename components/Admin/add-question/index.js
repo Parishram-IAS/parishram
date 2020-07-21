@@ -1,10 +1,13 @@
 import React, { useState, Fragment } from "react";
-import { Form, Table } from "semantic-ui-react";
+import { Form, Table, FormButton } from "semantic-ui-react";
 import XLS from "xlsx";
 import { dateFormatForInputTag } from "../../../utils/date";
+import { addNewQuestionSet } from "../../../services/firebase/questions";
 
 const excelDataColumns = {
   QUESTION: "question",
+  DESCRIPTION: "description",
+  URL:"url",
   OPTION_1: "option1",
   OPTION_2: "option2",
   OPTION_3: "option3",
@@ -43,14 +46,24 @@ const AddQuestion = () => {
     reader.readAsBinaryString(selectedFile);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+      if(!uploadedQuestions || uploadedQuestions.length === 0 ){
+          return
+      }
+     
+      const newQuestionSet = {...uploadedQuestions}
+      const questionDate = selectedDate.substring(5)
+      addNewQuestionSet(selectedDate, newQuestionSet)
+  }
+
   const renderUploadedQuestions = () => {
     if (uploadedQuestions && uploadedQuestions.length > 0) {
       console.log("uploadedQuestions", uploadedQuestions);
       return (
         <Fragment>
-          {" "}
           <label>Uploaded Questions</label>
-          <Table celled>
+          <Table celled stackable>
             <Table.Header>
               <Table.Row>
                 {Object.values(excelDataColumns).map((column) => (
@@ -62,6 +75,8 @@ const AddQuestion = () => {
               {uploadedQuestions.map((question) => (
                 <Table.Row key={question[excelDataColumns.QUESTION]}>
                   <Table.Cell>{question[excelDataColumns.QUESTION]}</Table.Cell>
+                  <Table.Cell>{question[excelDataColumns.DESCRIPTION]}</Table.Cell>
+                  <Table.Cell>{question[excelDataColumns.URL]}</Table.Cell>
                   <Table.Cell>{question[excelDataColumns.OPTION_1]}</Table.Cell>
                   <Table.Cell>{question[excelDataColumns.OPTION_2]}</Table.Cell>
                   <Table.Cell>{question[excelDataColumns.OPTION_3]}</Table.Cell>
@@ -81,7 +96,7 @@ const AddQuestion = () => {
     <Form>
       <Form.Field>
         <label>Select Date</label>
-        <input type="date" value={selectedDate} onChange={handleDateChange} />
+        <input type="date" value={selectedDate} onChange={handleDateChange} required />
       </Form.Field>
       <Form.Field>
         <label>Upload Questions</label>
@@ -89,10 +104,13 @@ const AddQuestion = () => {
           type="file"
           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
           onChange={handleInputFileChange}
+          required
         />
       </Form.Field>
-
       {renderUploadedQuestions()}
+      <Form.Field>
+          <Form.Button type="submit" onClick={handleSubmit}>Submit</Form.Button>
+      </Form.Field>
     </Form>
   );
 };

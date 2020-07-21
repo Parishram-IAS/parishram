@@ -24,8 +24,8 @@ const Admin = () => {
                 <div className="admin-wrapper">
                     <Tab
                         grid={{
-                            paneWidth: 11,
-                            tabWidth: 5,
+                            paneWidth: 14,
+                            tabWidth: 2,
                         }}
                         menu={{
                             fluid: true,
