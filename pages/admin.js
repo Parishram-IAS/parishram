@@ -3,9 +3,10 @@ import { Tab, Responsive } from 'semantic-ui-react';
 
 import Layout from '../components/Layout';
 import AddArticle from '../components/Admin/add-article';
+import AddQuestion from '../components/Admin/add-question';
 const panes = [
     { menuItem: 'Add Article', render: () => <Tab.Pane className="admin-tab-pane"><AddArticle /></Tab.Pane> },
-    { menuItem: 'Add Questions', render: () => <Tab.Pane className="admin-tab-pane">Tab 2 Content</Tab.Pane> },
+    { menuItem: 'Add Questions', render: () => <Tab.Pane className="admin-tab-pane"><AddQuestion /></Tab.Pane> },
     
 ]
 
