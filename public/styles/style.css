@@ -29,6 +29,13 @@ a {
   background-size: 100% 100%;
 }
 
+.parentWidth{
+  width: inherit!important;
+}
+
+.fullWidth{
+  width: 100%
+}
 /* Editorail Card START*/
 
 .editorial-menu-tab > .secondary{
@@ -110,3 +117,44 @@ a {
 }
 
 /* RELEVANT NEWS START */
+
+/* ADMIN  START  */
+.admin-wrapper{
+  padding-top:10px;
+}
+.admin-wrapper .ui.secondary.menu a.item{
+  background: none!important;
+}
+.admin-wrapper .ui.secondary.menu a.item:hover{
+  background: none!important;
+  color: rgba(239, 72, 26, 0.8)!important
+}
+.admin-wrapper .ui.vertical.secondary > .active{
+  color: rgba(239, 72, 26, 0.8)!important
+}
+/* ADMIN END    */
+
+/* QUIZ START */
+
+.question-number-wrapper{
+  width: 100%;
+  border: 1px solid #FBD84B!important;
+}
+.question-number{
+  margin: 0 5px 5px 0!important;
+  border: 1px solid #CFCFCF;
+  padding: 5px 5px!important;
+  width: 30px!important;
+  text-align: center!important;
+  background-color: #fff;
+  cursor: pointer!important;
+}
+.question-number.active{
+  border: 1px solid #EF481A !important;
+  transform:scale(1.2)!important
+}
+.question-number.reviewClass{
+  background: #FBD84B;
+}
+
+/* QUIZ END   */
