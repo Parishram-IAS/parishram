@@ -4,7 +4,6 @@ const questions = {
             question: 'What does CSS stand for?',
             answers: ['Computer Style Sheets', 'Creative Style Sheets', 'Cascading Style Sheets', 'Colorful Style Sheets'],
             correct: 3,
-            type:'single'
         },
 
         2: {

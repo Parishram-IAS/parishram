@@ -3,6 +3,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 import '../public/styles/style.css';
 import '../public/styles/_fonts.css';
+import 'react-calendar/dist/Calendar.css';
+
 import ErrorBoundary from '../components/ErrorBoundary';
 
 function App({ Component, pageProps }) {
